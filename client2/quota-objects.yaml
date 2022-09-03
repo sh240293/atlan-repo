@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: object-counts
+spec:
+  hard:
+    configmaps: "10"
+    persistentvolumeclaims: "4"
+    deployment: "5"
+    secrets: "10"
+    services: "10"
+    services.loadbalancers: "2"

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+   name: client1
+   labels:
+      ns: client1
+

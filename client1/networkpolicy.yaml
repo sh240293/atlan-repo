@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: np-client1
+spec:
+  podSelector:  {}
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  -from:
+   -namespaceSelector:
+      matchLabels:
+        ns: client1
+  egress:
+  -to:
+   -namespaceSelector:
+      matchLabels:
+        ns: client1
