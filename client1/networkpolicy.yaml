@@ -8,12 +8,12 @@ spec:
   - Ingress
   - Egress
   ingress:
-  -from:
-   -namespaceSelector:
+  - from:
+   - namespaceSelector:
       matchLabels:
         ns: client1
   egress:
-  -to:
-   -namespaceSelector:
+  - to:
+   - namespaceSelector:
       matchLabels:
         ns: client1
