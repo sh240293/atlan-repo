@@ -10,10 +10,10 @@ spec:
   ingress:
   - from:
     - namespaceSelector:
-      matchLabels:
-        ns: client1
+        matchLabels:
+           ns: client1
   egress:
   - to:
     - namespaceSelector:
-      matchLabels:
-        ns: client1
+        matchLabels:
+           ns: client1
