@@ -3,5 +3,5 @@ kind: Namespace
 metadata:
    name: client1
    labels:
-      ns: client1
+      name: client1
 
