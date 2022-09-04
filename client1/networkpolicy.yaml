@@ -3,7 +3,9 @@ kind: NetworkPolicy
 metadata:
   name: np-client1
 spec:
-#  podSelector: {}
+  podSelector:
+    matchLabels:
+      app: nginx       
   ingress:
   - from:
     - namespaceSelector:
