@@ -3,10 +3,7 @@ kind: NetworkPolicy
 metadata:
   name: np-client1
 spec:
-  podSelector: {}
-  policyTypes:
-  - Ingress
-  - Egress
+  podSelector:
   ingress:
   - from:
     - namespaceSelector:
