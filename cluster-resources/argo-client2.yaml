@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: client-1
+  name: client-2
   namespace: argocd
 spec:
   destination:
-    namespace: clinet1
+    namespace: clinet2
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: client1
+    path: client2
     repoURL: git@github.com:sh240293/atlan-repo.git
     targetRevision: HEAD
   syncPolicy:
