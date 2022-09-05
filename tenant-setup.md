@@ -35,12 +35,15 @@ I have taken Centos7 Image to create these two VMs, Also installed & configured 
 ![cluster-info](cluster-resources/images/cluster-info.png)
 
 I have configured weave-net for networking inside cluster, metallb for load balancer configuration. Also i have installed ArgoCD and will perform this using a fully gitops method.
+Also i have made two docker images for both tenants to check application from outside of cluster (as a customer) and deployed for both Clinet1 & Client2 along with service type as LoadBalancer. I will show this thing at last of the step.
 
 ![argocd-svc](cluster-resources/images/argocd-svc.png)
 
-I have added two folders for two tenants as Client1 and Client2 with their own yaml manifest. These yamls have applied as admin of cluster, Also deployed sample web app for these two tenants with 2 replicas of pods, so that we can test network accessbility within NS and outside NS. As you can see all yamls have applied for client1.
+I have added two folders for two tenants as Client1 and Client2 with their own yaml manifest. These yamls have applied as admin of cluster, Also deployed sample web app for these two tenants with 2 replicas of pods, so that we can test network accessbility within NS and outside NS. As you can see all yamls have applied for client1 & client2.
 
 ![client-1-argo](cluster-resources/images/client-1-argo.png)
+
+![client-2-argo](cluster-resources/images/client2-argo.png)
 
 As you can get pods of Client1 below, IPs are `10.32.0.3` and `10.32.0.11` and service LB IP is `192.168.1.61`
 
@@ -76,4 +79,45 @@ Also I have retrcited access for both tenants in their own Namespace only, they 
 
 I have created user certificate to get access through `kubectl`, below are the steps written to create user/groups to access API server.
 
+I have copied files `ca.crt` and `ca.key` from Master Node, to create custom user's auth certificate file. You can refer this path `cluster-resources/tenant-user`
 
+**Steps followed for Client1**
+
+```
+mkdir -p  ~/.kube/users && cd ~/.kube/users
+
+openssl genrsa -out client1.key 2048
+
+openssl req -new -key client1.key -out client1.csr -subj "/CN=client1/O=tenant1"        // created a group tenant1
+
+openssl x509 -req -CA /home/deepu/atlan/tenant-user/ca.crt -CAkey /home/deepu/atlan/tenant-user/ca.key -CAcreateserial -days 730 -in client1.csr -out client1.crt
+```
+Now here I have two files created for Client1 (`client1.crt` & `client1.key`), It will be required to setup context to access API server using kubectl for Client1.
+
+```
+kubectl config set-credentials client1 --client-certificate=client1.crt --client-key=client1.key
+
+kubectl config get-contexts
+
+kubectl config use-context client1-kubernetes
+```
+
+When successfully setup it will look like as below (I have setup `kubectx` in my localhost to switch contexts in easy way)
+
+![context](cluster-resources/images/context.png)
+
+Similarly, we can follow above steps for other tenants.
+
+You can see here, I have tried to list pods in clinet1 NS and other NS as user clinet1. See below result output
+
+![kubectl-client1](cluster-resources/images/client1-access-kubectl.png)
+
+It can only access resources in their own NS only.
+
+Now at final, we can test both tenant's web app is running fine or not as a customer.
+
+![webapp-access](cluster-resources/images/web-app-access.png)
+
+You can see, everything is running fine and according to our expectation.
+
+**Thank You**
