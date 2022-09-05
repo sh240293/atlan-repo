@@ -38,5 +38,11 @@ I have configured weave-net for networking inside cluster, metallb for load bala
 
 ![argocd-svc](cluster-resources/images/argocd-svc.png)
 
+I have added two folders for two tenants as Client1 and Client2 with their own yaml manifest. These yamls have applied as admin of cluster, Also deployed sample web app for these two tenants with 2 replicas of pods, so that we can test network accessbility within NS and outside NS. As you can see all yamls have applied for client1.
 
+![client-1-argo](cluster-resources/images/client-1-argo.png)
+
+As you can get pods of Client1 below, IPs are `10.32.0.3` and `10.32.0.11`
+
+![client1-app-pod](cluster-resources/images/client1-app-pod.png)
 
