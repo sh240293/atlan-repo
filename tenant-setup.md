@@ -42,7 +42,7 @@ I have added two folders for two tenants as Client1 and Client2 with their own y
 
 ![client-1-argo](cluster-resources/images/client-1-argo.png)
 
-As you can get pods of Client1 below, IPs are `10.32.0.3` and `10.32.0.11`
+As you can get pods of Client1 below, IPs are `10.32.0.3` and `10.32.0.11` and service IP is `192.168.1.61`
 
-![client1-app-pod](cluster-resources/images/client1-app-pod.png)
+![client-1-app-pod](cluster-resources/images/client1-app-pod.png)
 
