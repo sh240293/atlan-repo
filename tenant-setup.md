@@ -42,7 +42,38 @@ I have added two folders for two tenants as Client1 and Client2 with their own y
 
 ![client-1-argo](cluster-resources/images/client-1-argo.png)
 
-As you can get pods of Client1 below, IPs are `10.32.0.3` and `10.32.0.11` and service IP is `192.168.1.61`
+As you can get pods of Client1 below, IPs are `10.32.0.3` and `10.32.0.11` and service LB IP is `192.168.1.61`
 
 ![client-1-app-pod](cluster-resources/images/client1-app-pod.png)
+
+Now you can get pods of Client2 below, IPs are `10.32.0.18` and `10.32.0.17` and service LB IP is `192.168.1.62`
+
+![client-2-app-pod](cluster-resources/images/client2-app-pod.png)
+
+Now we will check Network Connectivity of Pods within same tenant's NS or different tenant's NS.
+
+I have login into Client1 first pod `10.32.0.3` and will try to ping/curl on another pod `10.32.0.11` in same NS, It should be accessible. Check below
+
+![client-1-pod-ping](cluster-resources/images/client-1-pod-ping.png)
+
+But, when i will try to ping/curl on different tenant's (Client2) pod, it should not accessible. Check below
+
+![client1-to-client2](cluster-resources/images/client1-to-client2.png)
+
+As expected we are not able to access Client2 pods from Client1.
+
+Now I will check from Client2 pods in similar way, I have login into Clien2 first po `10.32.0.18` and will try to ping/curl on another pod `10.32.0.17` in same NS, It should be accessible. Check below
+
+![client2-to-client2](cluster-resources/images/client2-to-client2.png)
+
+But, when i will try to ping/curl on different tenant's (Client1) pod, it should not accessible. Check below
+
+![client2-to-client1](cluster-resources/images/client2-to-client1.png)
+
+
+
+Also I have retrcited access for both tenants in their own Namespace only, they can't even view any other resources inside cluster.
+
+I have created user certificate to get access through `kubectl`, below are the steps written to create user/groups to access API server.
+
 
