@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client2-app
+spec:
+  selector:
+    matchLabels:
+      app: client2
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: client2
+    spec:
+      containers:
+      - name: client2
+        image: sh240293/atlan-multi-tentant:client2
+        ports:
+        - containerPort: 80
+

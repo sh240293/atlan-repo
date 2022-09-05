@@ -8,5 +8,9 @@ resources:
 - quota-compute.yaml
 - quota-objects.yaml
 - limitrange.yaml
-- networkpolicy.yaml  
+- networkpolicy.yaml
+- role.yaml
+- role-binding.yaml
+- deployment.yaml
+- service.yaml  
 
