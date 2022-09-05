@@ -75,7 +75,7 @@ But, when i will try to ping/curl on different tenant's (Client1) pod, it should
 
 
 
-Also I have retrcited access for both tenants in their own Namespace only, they can't even view any other resources inside cluster.
+Also I have retrcited access for both tenants in their own Namespace only, they can't even view any other resources inside other's Namespace.
 
 I have created user certificate to get access through `kubectl`, below are the steps written to create user/groups to access API server.
 
