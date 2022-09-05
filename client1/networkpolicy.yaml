@@ -18,10 +18,10 @@ spec:
   - Ingress
   ingress:
   - from:
+    - ipBlock:
+        cidr: 192.168.0.0/16          
     - namespaceSelector:
         matchLabels:
            name: client1
-      podSelector:
-          matchLabels:
-              app: client1
+      podSelector: {}
 
