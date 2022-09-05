@@ -10,8 +10,4 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 80
-  type: LoadBalancer
-status:
-  loadBalancer:
-    ingress:
-    - ip: 192.168.1.65  
+  type: NodePort
