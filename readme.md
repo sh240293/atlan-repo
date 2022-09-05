@@ -65,7 +65,7 @@ But, when i will try to ping/curl on different tenant's (Client2) pod, it should
 
 As expected we are not able to access Client2 pods from Client1.
 
-Now I will check from Client2 pods in similar way, I have login into Clien2 first po `10.32.0.18` and will try to ping/curl on another pod `10.32.0.17` in same NS, It should be accessible. Check below
+Now I will check from Client2 pods in similar way, I have login into Client2 first pod `10.32.0.18` and will try to ping/curl on another pod `10.32.0.17` in same NS, It should be accessible. Check below
 
 ![client2-to-client2](cluster-resources/images/client2-to-client2.png)
 
@@ -108,7 +108,7 @@ When successfully setup it will look like as below (I have setup `kubectx` in my
 
 Similarly, we can follow above steps for other tenants.
 
-You can see here, I have tried to list pods in clinet1 NS and other NS as user clinet1. See below result output
+You can see here, I have tried to list pods in client1 NS and other NS as user client1. See below result output
 
 ![kubectl-client1](cluster-resources/images/client1-access-kubectl.png)
 
