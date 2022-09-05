@@ -10,5 +10,7 @@ resources:
 - limitrange.yaml
 - networkpolicy.yaml
 - role.yaml
-- role-binding.yaml  
+- role-binding.yaml
+- deployment.yaml
+- service.yaml  
 
